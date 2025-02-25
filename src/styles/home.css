@@ -1,0 +1,7 @@
+.homediv{
+    display: flex;
+    /* grid-template-columns: 300px 300px 300px; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

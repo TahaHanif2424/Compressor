@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Home from './Components/Home';
+import './styles/App.css';
 
 function App() {
+  const [bgcolor, setbgcolor] = useState('whitebackground');
+  const [theme, settheme] = useState('Dark Mode');
+
+  const changetheme = () => {
+    if (bgcolor === 'whitebackground') {
+      setbgcolor('blackbackground');
+      settheme('Light Mode');
+    } else {
+      setbgcolor('whitebackground');
+      settheme('Dark Mode');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className={`app-container ${bgcolor}`}>
+        <div className='switchdiv'>
+          <div style={{ color: bgcolor === 'whitebackground' ? 'black' : 'white' }}>{theme}</div>
+          <label className="switch">
+            <input type="checkbox" onClick={changetheme} />
+            <span className="slider round"></span>
+          </label>
+        </div>
+
+       
+         <Home background={bgcolor} />
+
+      </div>
   );
 }
 
